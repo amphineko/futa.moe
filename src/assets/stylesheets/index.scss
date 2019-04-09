@@ -1,0 +1,64 @@
+@charset 'utf-8';
+
+@import "../../../node_modules/normalize.css/normalize.css";
+
+@import "./layout.scss";
+
+body {
+    background: url('../images/background.svg') #336f99 no-repeat;
+    background-size: cover;
+    font-family: "Helvetica Neue", Helvetica, Arial, PingFangTC-Light, "Microsoft YaHei", 微软雅黑, "STHeiti Light", STXihei, "华文细黑", Heiti, 黑体, sans-serif;
+}
+
+#container-main {
+    background: rgba(0, 0, 0, 0.075);
+    box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.1);
+
+    .banner {
+        .link {
+            .content {
+                background-color: rgba(255, 255, 255, 0.96);
+                box-shadow: 0 0 0.1em rgba(0, 0, 0, 0.1);
+                color: #eee;
+            }
+
+            .content::before {
+                color: #aaa;
+            }
+        }
+
+        .description {
+            color: #eee;
+        }
+    }
+
+    .footer {
+        color: #eee;
+    }
+}
+
+.banner#banner-amphineko {
+    background-position: top 0 left -2px;
+
+    .link .content {
+        background-image: url('../images/amphineko.png');
+        color: #407fbf;
+    }
+}
+
+.banner#banner-maeeko {
+    background-position: top 0 left 126px;
+
+    .link .content {
+        background-image: url('../images/maeeko.png');
+        color: #bf4040;
+    }
+}
+
+.banner#banner-aquanet {
+    background-position: top 0 left 254px;
+
+    .link .content {
+        color: #999;
+    }
+}
