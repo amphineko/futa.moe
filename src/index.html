@@ -4,30 +4,47 @@
 
 <head>
     <meta charset=utf-8>
-    <meta name=viewport content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1"/>
+    <meta name=viewport content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1" />
     <title>index of futa.moe</title>
-    <link href="index.css" rel="stylesheet">
+    <link href="${require('./assets/stylesheets/index.scss')}" rel="stylesheet">
 </head>
 
 <body>
-    <div id="container-main">
-        <div class="banner" id="banner-amphineko">
-            <a class="link" href="amphineko/"><span data-prefix="/" class="content">amphineko</span></a>
-            <span class="description">about amphineko, a person</span>
-        </div>
+    <div id="container">
+        <ul class="links">
+            <li class="link">
+                <a href="//futa.moe/amphineko/" id="link-amphineko">
+                    <span data-prefix="/" class="title">amphineko</span>
+                    <span class="description">about amphineko, a person</span>
+                </a>
+            </li>
 
-        <div class="banner" id="banner-maeeko">
-            <a class="link" href="maeeko/"><span data-prefix="/" class="content">maeeko</span></a>
-            <span class="description">about maeeko, a laboratory</span>
-        </div>
+            <li class="link">
+                <a href="//futa.moe/maeeko/" id="link-maeeko">
+                    <span data-prefix="/" class="title">maeeko</span>
+                    <span class="description">about maeeko, a laboratory</span>
+                </a>
+            </li>
 
-        <div class="banner" id="banner-aquanet">
-            <a class="link" href="//portal.aqua.futa.moe/"><span data-prefix="\\" class="content">aqua-net</span></a>
-            <span class="description">system login portal</span>
-        </div>
+            <li class="link">
+                <a href="//kb.futa.moe/" id="link-wiki">
+                    <span data-prefix="" class="title">kb.futa.moe</span>
+                    <span class="description">amphineko's personal wiki</span>
+                </a>
+            </li>
 
-        <p class="footer">copyright © 2017-2019 FUTA-MOE-OWNER<br />
-            illustrations have their own licenses</p>
+            <li class="link">
+                <a href="//portal.aqua.futa.moe/" id="link-login">
+                    <span data-prefix="\\" class="title">aqua-net</span>
+                    <span class="description">intranet login portal</span>
+                </a>
+            </li>
+        </ul>
+
+        <p class="footer">
+            Copyright © 2017-2020 futa.moe<br />
+            Illustrations have their own licenses
+        </p>
     </div>
 </body>
 

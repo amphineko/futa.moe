@@ -1,65 +1,82 @@
 const path = require('path')
 
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
-const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
     context: path.resolve(__dirname, 'src'),
 
+    devServer: {
+        contentBase: path.resolve(__dirname, 'dist')
+    },
+
+    devtool: 'inline-source-map',
+
     entry: {
-        index: './index.js',
+        index: './index.js'
     },
 
     module: {
         rules: [
             {
-                test: /\.(eot|jpg|png|svg|ttf|woff2?)$/,
-                loader: 'file-loader',
-                options: {
-                    name: '[path][name].[ext]',
-                },
+                test: /\.(jpg|png)$/,
+                use: [
+                    'file-loader?name=assets/[name].[contenthash:8].webp',
+                    'webp-loader'
+                ]
             },
             {
-                test: /\.(html)$/,
-                use: [
-                    'file-loader?name=[name].[ext]',
-                    'extract-loader',
-                    {
-                        loader: 'html-loader',
-                        options: {
-                            minimize: true,
-                            removeComments: false,
-                            collapseWhitespace: false
-                        },
-                    },
-                ],
+                test: /\.(svg)$/,
+                use: 'file-loader?name=assets/[name].[contenthash:8].[ext]'
             },
             {
                 test: /\.(c|sa|sc)ss$/,
                 use: [
-                    MiniCssExtractPlugin.loader,
-                    'css-loader',
-                    'resolve-url-loader',
-                    "sass-loader",
-                ],
-            },
-        ],
+                    'file-loader?name=[name].[contenthash:8].css',
+                    'extract-loader',
+                    {
+                        loader: 'css-loader',
+                        options: {
+                            importLoaders: 1
+                        }
+                    },
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            ident: 'postcss',
+                            plugins: () => [
+                                require('cssnano')({ preset: 'default' }),
+                                require('postcss-preset-env')()
+                            ],
+                            sourceMap: true
+                        }
+                    },
+                    {
+                        loader: 'sass-loader',
+                        options: {
+                            sourceMap: true
+                        }
+                    },
+                    {
+                        loader: 'resolve-url-loader',
+                        options: {
+                            sourceMap: true
+                        }
+                    }
+                ]
+            }
+        ]
     },
 
     output: {
-        filename: 'index.bundle.js',
-        path: path.resolve(__dirname, 'dist'),
+        filename: '[name].[contenthash:8].js',
+        path: path.resolve(__dirname, 'dist')
     },
 
     plugins: [
-        new BrowserSyncPlugin({
-            host: 'localhost',
-            port: 3000,
-            server: { baseDir: ['dist'] },
-        }),
-        new MiniCssExtractPlugin({
-            chunkFilename: '[id].css',
-            filename: '[name].css',
-        }),
-    ],
+        new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            template: 'index.html'
+        })
+    ]
 }

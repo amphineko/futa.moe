@@ -1,64 +1,112 @@
 @charset 'utf-8';
 
-@import "../../../node_modules/normalize.css/normalize.css";
-
-@import "./layout.scss";
+@import '~normalize.css/normalize.css';
 
 body {
-    background: url('../images/background.svg') #336f99 no-repeat;
+    align-items: center;
+    display: flex;
+    min-height: 100vh;
+    padding: 0;
+
+    background: url('../images/background.svg') #111 no-repeat;
     background-size: cover;
-    font-family: "Helvetica Neue", Helvetica, Arial, PingFangTC-Light, "Microsoft YaHei", 微软雅黑, "STHeiti Light", STXihei, "华文细黑", Heiti, 黑体, sans-serif;
+    font-family: 'Helvetica Neue', Helvetica, Arial, PingFangTC-Light, 'Microsoft YaHei', 微软雅黑, 'STHeiti Light',
+        STXihei, '华文细黑', Heiti, 黑体, sans-serif;
 }
 
-#container-main {
-    background: rgba(0, 0, 0, 0.075);
-    box-shadow: 0 0 0.25em rgba(0, 0, 0, 0.1);
+#container {
+    align-self: center;
+    margin: 0 auto;
+    max-width: 32em;
+    padding: 1em;
+    width: 100%;
 
-    .banner {
-        .link {
-            .content {
-                background-color: rgba(255, 255, 255, 0.96);
-                box-shadow: 0 0 0.1em rgba(0, 0, 0, 0.1);
-                color: #eee;
-            }
+    ul.links {
+        margin: 0;
+        padding: 0;
 
-            .content::before {
-                color: #aaa;
-            }
+        li.link:hover {
+            box-shadow: 0 0 1em 1em rgba(0, 0, 0, 0.125);
+            transform: translate(0 -0.1em);
         }
 
-        .description {
-            color: #eee;
+        li.link {
+            box-shadow: 0 0 0.5em 0.5em rgba(0, 0, 0, 0.075);
+            list-style: none;
+            margin: 2em 0;
+            transition-duration: 0.5s;
+
+            a {
+                display: block;
+                padding: 1em;
+
+                background: white;
+                background-repeat: no-repeat;
+                background-size: auto 150%;
+                background-position: right 50%;
+                text-decoration: none;
+
+                span.description {
+                    display: block;
+                    line-height: 2em;
+                    padding: 0 0.5em;
+                    width: fit-content;
+
+                    color: #555;
+                }
+
+                span.title {
+                    display: block;
+                    line-height: 1.5em;
+                    padding: 0 0.25em;
+
+                    font-size: 2em;
+                }
+
+                span.title::before {
+                    font-size: 0.8em;
+                    margin-right: 0.1em;
+
+                    color: #777;
+                    content: attr(data-prefix);
+                }
+            }
+
+            a#link-amphineko {
+                background-image: url('../images/amphineko.png');
+
+                span.title {
+                    color: #407fbf;
+                }
+            }
+
+            a#link-login span.title {
+                color: #555;
+            }
+
+            a#link-maeeko {
+                background-image: url('../images/maeeko.png');
+
+                span.title {
+                    color: #bf4040;
+                }
+            }
+
+            a#link-wiki {
+                background-image: url('../images/nat-pants.png');
+
+                span.title {
+                    color: #555;
+                }
+            }
         }
     }
 
     .footer {
-        color: #eee;
-    }
-}
+        font-size: 0.75em;
+        line-height: 1.5em;
+        text-align: right;
 
-.banner#banner-amphineko {
-    background-position: top 0 left -2px;
-
-    .link .content {
-        background-image: url('../images/amphineko.png');
-        color: #407fbf;
-    }
-}
-
-.banner#banner-maeeko {
-    background-position: top 0 left 126px;
-
-    .link .content {
-        background-image: url('../images/maeeko.png');
-        color: #bf4040;
-    }
-}
-
-.banner#banner-aquanet {
-    background-position: top 0 left 254px;
-
-    .link .content {
-        color: #999;
+        color: rgba(0, 0, 0, 0.4);
     }
 }
