@@ -2,15 +2,17 @@
 
 @import '~normalize.css/normalize.css';
 
+html {
+    height: 100%;
+}
+
 body {
     display: flex;
-
-    min-height: 100vh;
+    height: 100%;
 
     background: url('../images/background.svg') #111 no-repeat;
     background-size: cover;
-    font-family: 'Helvetica Neue', Helvetica, Arial, PingFangTC-Light, 'Microsoft YaHei', 微软雅黑, 'STHeiti Light',
-        STXihei, '华文细黑', Heiti, 黑体, sans-serif;
+    font-family: 'Open Sans', Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 body::after {
@@ -22,7 +24,7 @@ body::after {
 body::before {
     content: ' ';
     display: block;
-    flex-grow: 1.5;
+    flex-grow: 9.5;
 }
 
 #container {
@@ -30,14 +32,13 @@ body::before {
     box-shadow: 0 0 0.5em 0.5em rgba(0, 0, 0, 0.25);
 
     flex-grow: 1;
+    max-width: 48em;
+    min-height: 100%;
+    width: 100%;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    max-width: 48em;
-    min-height: 100%;
-    width: 100%;
 
     nav {
         align-self: center;
@@ -149,6 +150,7 @@ body::before {
 
     footer {
         align-self: flex-end;
+        flex-grow: 0.1;
 
         display: box;
         line-height: 2em;

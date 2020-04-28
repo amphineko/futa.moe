@@ -26,7 +26,7 @@ module.exports = {
                 ]
             },
             {
-                test: /\.(svg)$/,
+                test: /\.(eot|svg|ttf|woff|woff2)$/,
                 use: 'file-loader?name=assets/[name].[contenthash:8].[ext]'
             },
             {
