@@ -3,10 +3,9 @@
 @import '~normalize.css/normalize.css';
 
 body {
-    align-items: center;
     display: flex;
+
     min-height: 100vh;
-    padding: 0;
 
     background: url('../images/background.svg') #111 no-repeat;
     background-size: cover;
@@ -14,99 +13,150 @@ body {
         STXihei, '华文细黑', Heiti, 黑体, sans-serif;
 }
 
+body::after {
+    content: ' ';
+    display: block;
+    flex-grow: 0.5;
+}
+
+body::before {
+    content: ' ';
+    display: block;
+    flex-grow: 1.5;
+}
+
 #container {
-    align-self: center;
-    margin: 0 auto;
-    max-width: 32em;
-    padding: 1em;
+    background: rgba(255, 255, 255, 1);
+    box-shadow: 0 0 0.5em 0.5em rgba(0, 0, 0, 0.25);
+
+    flex-grow: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    max-width: 48em;
+    min-height: 100%;
     width: 100%;
 
-    ul.links {
-        margin: 0;
-        padding: 0;
+    nav {
+        align-self: center;
+        flex-grow: 1;
 
-        li.link:hover {
-            box-shadow: 0 0 1em 1em rgba(0, 0, 0, 0.125);
-            transform: translate(0 -0.1em);
-        }
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
 
-        li.link {
-            box-shadow: 0 0 0.5em 0.5em rgba(0, 0, 0, 0.075);
-            list-style: none;
-            margin: 2em 0;
-            transition-duration: 0.5s;
+        box-sizing: border-box;
+        padding: 1em;
+        width: 100%;
 
-            a {
-                display: block;
-                padding: 1em;
+        ul {
+            align-self: center;
+            margin: 1em 0;
 
-                background: white;
-                background-repeat: no-repeat;
-                background-size: auto 150%;
-                background-position: right 50%;
-                text-decoration: none;
+            display: block;
+            max-width: 32em;
+            padding: 0;
+            width: 100%;
 
-                span.description {
+            li {
+                box-shadow: 0 0 0.1em 0.1em rgba(0, 0, 0, 0.05);
+                list-style: none;
+
+                border-radius: 1em;
+                box-sizing: border-box;
+                padding-left: 1.5em;
+                margin: 1em 0;
+
+                transition-duration: 0.25s;
+
+                a {
                     display: block;
-                    line-height: 2em;
-                    padding: 0 0.5em;
-                    width: fit-content;
+                    padding: 1em 1em;
 
-                    color: #555;
+                    background-repeat: no-repeat;
+                    background-size: auto 150%;
+                    background-position: right 50%;
+
+                    text-decoration: none;
+
+                    span {
+                        display: block;
+                        margin: 0.2em 0;
+                    }
+
+                    span.description {
+                        color: #555;
+                    }
+
+                    span.title {
+                        font-size: 2.5em;
+                    }
+
+                    span.title::before {
+                        display: inline-block;
+                        font-size: 0.8em;
+                        margin-left: -1em;
+                        text-align: center;
+                        width: 1em;
+
+                        color: #777;
+                        content: attr(data-prefix);
+                    }
                 }
 
-                span.title {
-                    display: block;
-                    line-height: 1.5em;
-                    padding: 0 0.25em;
-
-                    font-size: 2em;
+                @media (max-width: 30em) {
+                    a {
+                        background-image: none !important;
+                    }
                 }
 
-                span.title::before {
-                    font-size: 0.8em;
-                    margin-right: 0.1em;
-
-                    color: #777;
-                    content: attr(data-prefix);
-                }
-            }
-
-            a#link-amphineko {
-                background-image: url('../images/amphineko.png');
-
-                span.title {
+                a#link-amphineko {
+                    background-image: url(../images/amphineko.png);
                     color: #407fbf;
                 }
-            }
 
-            a#link-login span.title {
-                color: #555;
-            }
+                a#link-login {
+                    color: #555;
+                }
 
-            a#link-maeeko {
-                background-image: url('../images/maeeko.png');
-
-                span.title {
+                a#link-maeeko {
+                    background-image: url(../images/maeeko.png);
                     color: #bf4040;
                 }
-            }
 
-            a#link-wiki {
-                background-image: url('../images/nat-pants.png');
-
-                span.title {
+                a#link-wiki {
+                    background-image: url(../images/nat-pants.png);
                     color: #555;
                 }
             }
+
+            li:hover {
+                box-shadow: 0.05em 0.05em 0.2em 0.2em rgba(0, 0, 0, 0.1);
+            }
+        }
+
+        ul::before {
+            color: #aaa;
+            display: block;
+            content: attr(aria-label);
+            font-family: 'Courier New', Courier, monospace;
+            font-weight: 100;
+            font-size: 1.5em;
         }
     }
 
-    .footer {
-        font-size: 0.75em;
-        line-height: 1.5em;
+    footer {
+        align-self: flex-end;
+
+        display: box;
+        line-height: 2em;
+        padding: 1em;
+        width: 100%;
         text-align: right;
 
-        color: rgba(0, 0, 0, 0.4);
+        color: #ccc;
+        font-size: 0.75em;
     }
 }
