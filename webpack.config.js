@@ -21,8 +21,8 @@ module.exports = {
             {
                 test: /\.(jpg|png)$/,
                 use: [
-                    'file-loader?name=assets/[name].[contenthash:8].webp',
-                    'webp-loader'
+                    'file-loader?name=assets/[name].[contenthash:8].jpg',
+                    // 'webp-loader'
                 ]
             },
             {
