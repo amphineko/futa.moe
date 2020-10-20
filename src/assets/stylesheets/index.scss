@@ -10,7 +10,8 @@ body {
     display: flex;
     min-height: 100%;
 
-    background: url('../images/background.svg') #555 no-repeat center center fixed;
+    background: #555 no-repeat center center fixed;
+    background-image: url('../images/shrine-cat.jpg');
     background-size: cover;
     font-family: 'Open Sans', Roboto, 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
@@ -152,7 +153,7 @@ body::before {
         align-self: flex-end;
         flex-grow: 0.1;
 
-        display: box;
+        display: flex;
         line-height: 2em;
         padding: 1em;
         width: 100%;
