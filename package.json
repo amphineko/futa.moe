@@ -20,5 +20,6 @@
     "scripts": {
         "build": "webpack --mode production",
         "serve": "webpack serve --mode development"
-    }
+    },
+    "packageManager": "yarn@4.1.1"
 }
