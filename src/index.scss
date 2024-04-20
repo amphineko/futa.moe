@@ -1,0 +1,106 @@
+@charset 'utf-8';
+
+@import "~normalize.css/normalize.css";
+@import "~@fontsource/roboto/index.css";
+@import "~@fontsource/roboto/500.css";
+@import "~@fontsource/roboto-mono/index.css";
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    font-family: "Roboto Mono";
+}
+
+header {
+    h1 {
+        font-size: 1.2rem;
+    }
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+
+    @media (max-width: 96em) {
+        flex-direction: column;
+    }
+
+    section {
+        h2 {
+            font-size: 1.2rem;
+            margin: 0;
+            padding: 1em 0;
+
+            .domain {
+                background: rgba(0, 0, 0, 0.03);
+            }
+        }
+
+        ul {
+            display: flex;
+            flex-direction: column;
+
+            margin: 0;
+            padding: 0;
+
+            li {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+
+                a {
+                    display: block;
+                    margin: 0.25em -1em;
+                    padding: 0.75em 1em;
+
+                    color: #1b294b;
+                    text-decoration: none;
+
+                    transition-duration: 5s;
+
+                    span {
+                        display: inline-block;
+                    }
+
+                    span.title {
+                        font-size: 1.2rem;
+                        text-decoration: underline;
+                    }
+
+                    span.separator {
+                        display: none;
+                    }
+                }
+
+                a:hover {
+                    box-shadow: 0.1rem 0.1rem 0.1rem 0.1rem rgba(0, 0, 0, 0.1);
+                    transition-duration: 0.25s;
+                }
+
+                .missing {
+                    color: #ff3500;
+                    font-variant: small-caps;
+                }
+            }
+        }
+    }
+}
+
+footer {
+    border-top: 0.1rem solid #ccc;
+    font-size: 0.8em;
+}

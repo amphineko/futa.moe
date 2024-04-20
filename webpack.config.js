@@ -1,82 +1,56 @@
-const path = require('path')
+const path = require("path")
 
-const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require("mini-css-extract-plugin")
+const HtmlWebpackPlugin = require("html-webpack-plugin")
 
 module.exports = {
-    context: path.resolve(__dirname, 'src'),
-
     devServer: {
-        contentBase: path.resolve(__dirname, 'dist')
+        hot: true,
+        watchFiles: ["./src/**/*"],
     },
 
-    devtool: 'inline-source-map',
+    devtool: "inline-source-map",
 
     entry: {
-        index: './index.js'
+        index: "./src/index.js",
     },
 
     module: {
         rules: [
             {
-                test: /\.(jpg|png)$/,
+                test: /\.s?css$/,
                 use: [
-                    'file-loader?name=assets/[name].[contenthash:8].jpg',
-                    // 'webp-loader'
-                ]
+                    {
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            esModule: false,
+                        },
+                    },
+                    "css-loader",
+                    {
+                        loader: "sass-loader",
+                        options: {
+                            sourceMap: true,
+                        },
+                    },
+                ],
             },
-            {
-                test: /\.(eot|svg|ttf|woff|woff2)$/,
-                use: 'file-loader?name=assets/[name].[contenthash:8].[ext]'
-            },
-            {
-                test: /\.(c|sa|sc)ss$/,
-                use: [
-                    'file-loader?name=[name].[contenthash:8].css',
-                    'extract-loader',
-                    {
-                        loader: 'css-loader',
-                        options: {
-                            importLoaders: 1
-                        }
-                    },
-                    {
-                        loader: 'postcss-loader',
-                        options: {
-                            ident: 'postcss',
-                            plugins: () => [
-                                require('cssnano')({ preset: 'default' }),
-                                require('postcss-preset-env')()
-                            ],
-                            sourceMap: true
-                        }
-                    },
-                    {
-                        loader: 'sass-loader',
-                        options: {
-                            sourceMap: true
-                        }
-                    },
-                    {
-                        loader: 'resolve-url-loader',
-                        options: {
-                            sourceMap: true
-                        }
-                    }
-                ]
-            }
-        ]
+        ],
     },
 
     output: {
-        filename: '[name].[contenthash:8].js',
-        path: path.resolve(__dirname, 'dist')
+        clean: true,
+        filename: "assets/[name].[contenthash:8].js",
+        path: path.resolve(__dirname, "dist"),
+        assetModuleFilename: "assets/[name].[contenthash:8][ext]",
     },
 
     plugins: [
-        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            template: 'index.html'
-        })
-    ]
+            template: "./src/index.html",
+        }),
+        new MiniCssExtractPlugin({
+            filename: "assets/[name].[contenthash:8].css",
+        }),
+    ],
 }
